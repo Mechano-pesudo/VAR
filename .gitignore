@@ -12,6 +12,3 @@ Thumbs.db
 _jekyll/
 .sass-cache/
 *.gem
-
-# Optional: large media during dev (uncomment if needed)
-# assets/videos/*.mp4
