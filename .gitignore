@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jekyll
+_jekyll/
+.sass-cache/
+*.gem
+
+# Optional: large media during dev (uncomment if needed)
+# assets/videos/*.mp4

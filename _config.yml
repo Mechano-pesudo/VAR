@@ -1,0 +1,12 @@
+# GitHub Pages / Jekyll Configuration
+title: Fusion2FreeCAD
+description: Validity-Assured Regeneration of Parametric Solid Modeling
+theme: null  # Disable Jekyll theme so we use our own CSS
+
+# Disable Jekyll plugins
+plugins: []
+
+# Exclude unnecessary files from processing
+exclude:
+  - README.md
+  - Gemfile

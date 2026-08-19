@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validity-Assured Regeneration of Parametric Solid Modeling</title>
+  <meta name="description" content="Validity-Assured Regeneration of Parametric Solid Modeling — SIGGRAPH Asia" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+  <!-- ==================== Hero ==================== -->
+  <header class="hero container">
+    <h1>Validity-Assured Regeneration of Parametric Solid Modeling</h1>
+
+    <div class="link-bar">
+      <a href="TODO_PAPER_PDF_LINK" target="_blank" rel="noopener">
+        <!-- paper icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h5v7h7v9H6z"/></svg>
+        Paper
+      </a>
+      <!--
+      <a href="https://arxiv.org/abs/TODO" target="_blank" rel="noopener">
+        arXiv
+      </a>
+    -->
+      <a href="https://github.com/chenchenzi718/Fusion2FreeCAD" target="_blank" rel="noopener">
+        <!-- github icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.02c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6.02 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.81 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3"/></svg>
+        Code
+      </a>
+
+    <!--
+      <a href="TODO_DATASET_LINK" target="_blank" rel="noopener">
+        Dataset
+      </a>
+
+      <a href="TODO_VIDEO_LINK" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+        Video
+      </a>
+    -->
+
+    </div>
+
+    <!-- Authors -->
+    <div class="authors">
+      <div class="author-list">
+        <a href="https://orcid.org/0009-0009-6407-5064" target="_blank" rel="noopener">Zehao Chen<sup>1</sup></a>
+        <a href="https://orcid.org/0009-0009-6427-8750" target="_blank" rel="noopener">Zihe Zheng<sup>1</sup></a>
+        <a href="https://orcid.org/0009-0005-1199-0390" target="_blank" rel="noopener">Yang Lu<sup>2</sup></a>
+        <a href="https://orcid.org/0009-0007-8619-6882" target="_blank" rel="noopener">YuShan Feng<sup>1</sup></a>
+        <a href="https://orcid.org/0009-0006-3764-2818" target="_blank" rel="noopener">Jialin Li<sup>1</sup></a>
+        <a href="https://orcid.org/0009-0007-3527-6313" target="_blank" rel="noopener">Cong Chen<sup>2</sup></a>
+        <a href="https://orcid.org/0000-0003-4352-1431" target="_blank" rel="noopener">Ligang Liu<sup>1</sup>*</a>
+      </div>
+      <div class="institution">
+        <sup>1</sup> University of Science and Technology of China &nbsp;&middot;&nbsp;
+        <sup>2</sup> Sheyun Technology
+      </div>
+      <div class="institution" style="font-size:0.85rem; margin-top:2px;">
+        * Corresponding author
+      </div>
+    </div>
+
+    <!-- Teaser Image / Video -->
+    <div class="teaser">
+      <img src="assets/images/teaser.jpeg" alt="Teaser" />
+    </div>
+  </header>
+
+  <!-- ==================== Abstract ==================== -->
+  <section class="abstract container fade-in">
+    <h2 class="section-title">Abstract</h2>
+    <p>
+      Feature-based parametric modeling remains the primary approach for product modeling.
+      It represents model construction as a sequence of parameterized features and
+      re-executes the sequence whenever the parameters are modified, a procedure known as
+      <em>regeneration</em>. Regeneration is triggered frequently during model editing,
+      making its efficiency crucial in product design.
+    </p>
+    <p>
+      Despite its practical significance, regeneration has received limited attention in the
+      academic literature. Moreover, existing criteria for determining reusable previously
+      computed data for regeneration may lead to incorrect results, making validity crucial.
+      Yet validity is rarely discussed or theoretically justified in prior regeneration methods.
+    </p>
+    <p>
+      In this work, we present a <strong>validity-assured method</strong> that accelerates
+      regeneration. Specifically, we (i)&nbsp;propose two novel <em>locality criteria</em>
+      under which information from generation can be reused to accelerate regeneration while
+      guaranteeing correctness, and (ii)&nbsp;provide a rigorous theoretical proof of this
+      correctness guarantee.
+    </p>
+  </section>
+
+  <!-- ==================== Method ==================== -->
+  <section class="method container fade-in">
+    <h2 class="section-title">Method</h2>
+    <div class="method-content">
+      <p>
+        Our method, <strong>Validity-Assured Regeneration (VAR)</strong>, accelerates the
+        regeneration process by recording B-rep deltas during the initial generation and
+        reusing them during regeneration. When a feature-parameter change is local, many
+        downstream B-rep faces remain unchanged and can be directly reused through a
+        <strong>gluing-based regeneration (GR)</strong> step instead of being recomputed by
+        an expensive Boolean operation.
+      </p>
+
+      <p>
+        We introduce two locality criteria that determine whether a stored B-rep delta can be
+        safely reused. Criterion&nbsp;1 requires that the faces removed during generation still
+        exist in the updated input solids, so that the recorded removal regions remain
+        available. Criterion&nbsp;2 requires that the newly introduced boundary region does not
+        intersect the opposite input boundary, so that no new intersection curves are created.
+      </p>
+
+      <p>
+        When both criteria are satisfied, our method reuses the stored faces through a
+        gluing operation. When either criterion fails, the method falls back to full
+        recomputation, ensuring that the regenerated result is always
+        <em>consistent</em> with what a full regeneration would produce.
+      </p>
+
+      <div class="method-image">
+        <img src="assets/images/brepdelta.png" alt="Recording and reusing the B-rep delta" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Experiment ==================== -->
+  <section class="results container fade-in">
+    <h2 class="section-title">Experiment</h2>
+
+    <div class="method-image">
+      <img src="assets/images/Pipeline_page.png" alt="Experiment pipeline" />
+    </div>
+
+    <p style="text-align:justify; margin-bottom:20px;">
+      In the paper, we evaluate our method on the <strong>DeepCAD dataset</strong>. Each
+      Fusion&nbsp;360 model is first converted into an executable FreeCAD Python script; the
+      dataset is then filtered to keep only the models that
+      (1)&nbsp;have a modeling history longer than seven STO steps, and
+      (2)&nbsp;can be correctly generated, modified, and regenerated in FreeCAD
+      (dataset details are provided in the supplementary material),
+      leaving <strong>424</strong> valid parametric models.
+      For each model, every feature (except the last one) is randomly modified five times by
+      scaling its parameter value into the range <strong>[0.1,&nbsp;1.9]</strong>; the runtimes
+      of both validity-assured regeneration (VAR) and full Boolean regeneration (FBR) are
+      recorded for every experiment.
+    </p>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <img src="assets/images/gallery.png" alt="Models used in the experiments" height="400"/>
+        <p>Models used in the experiments (a subset of the 424 filtered models).</p>
+      </div>
+      <div class="result-card">
+        <img src="assets/images/gallary.png" alt="Excluded models" height="400"/>
+        <p>Excluded models (a subset), e.g. multi-part, multi-loop, or invalid models.</p>
+      </div>
+    </div>
+
+    <p style="text-align:justify; margin:24px 0 20px;">
+      To complement the dataset-based evaluation, the supplementary material additionally tests
+      two larger, hand-built models with much longer modeling histories:
+    </p>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <img src="assets/images/rod.png" alt="Rod model" height="300"/>
+        <p>The rod model (37 STO steps).</p>
+      </div>
+      <div class="result-card">
+        <img src="assets/images/robot.png" alt="Robot model" height="300"/>
+        <p>The robot model (53 STO steps).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Results ==================== -->
+  <section class="results container fade-in">
+    <h2 class="section-title">Results</h2>
+
+    <p style="text-align:justify; margin-bottom:20px;">
+      We report three metrics. The <strong>step-level time ratio</strong>
+      <em>TR</em><sub>j</sub>&nbsp;=&nbsp;<em>t</em><sub>VAR,j</sub>
+      /&nbsp;<em>t</em><sub>BR,j</sub>&nbsp;&times;&nbsp;100% measures the cost of one
+      regenerated STO step under VAR relative to a Boolean regeneration (BR); it is reported
+      only for steps where both criteria are satisfied and GR is applied. The
+      <strong>global time ratio</strong>
+      <em>TR</em><sub>global</sub>&nbsp;=&nbsp;<em>t</em><sub>VAR</sub>
+      /&nbsp;<em>t</em><sub>FBR</sub>&nbsp;&times;&nbsp;100% compares the total VAR runtime
+      with the FBR baseline over all regenerated steps of one parameter-modification
+      experiment. The <strong>saving ratio</strong>
+      <em>SR</em>&nbsp;=&nbsp;<em>N</em><sub>GR</sub>&nbsp;/&nbsp;<em>N</em>&nbsp;&times;&nbsp;100%
+      is the fraction of regenerated STO steps in which VAR replaces the Boolean operation
+      with gluing.
+    </p>
+    <p style="text-align:justify; margin-bottom:20px;">
+      Across all evaluation models, successful GR steps take on average only
+      <strong>26.37%</strong> of the Boolean time, a substantial speedup over BR. In
+      25.76% of the modification experiments the global time ratio exceeds 100%, typically by
+      a small margin: the locality criteria are still evaluated at nearly every regenerated
+      step even when GR is rarely triggered, adding a checking overhead on top of the BR
+      fallback.
+    </p>
+
+    <div class="result-card">
+      <img src="assets/images/statics1.png" alt="Histogram of the step-level time ratio" />
+      <p>Distribution of the step-level time ratio <em>TR</em><sub>j</sub> over all successfully
+      regenerated STO steps of all parameter-modification experiments.</p>
+    </div>
+
+    <div class="result-card">
+      <img src="assets/images/statics2.png" alt="Scatter plot of FBR versus VAR" />
+      <p>
+        Edit-level runtimes: each point is one parameter-modification experiment
+        (<em>t</em><sub>FBR</sub> vs. <em>t</em><sub>VAR</sub>). Blue points (below the
+        diagonal) are speeded up by VAR; red points are the cases where VAR incurs a slightly
+        higher cost.
+      </p>
+    </div>
+
+    <div class="result-card">
+      <img src="assets/images/statics3.png" alt="Distribution of the saving ratio" />
+      <p>
+        Distribution of the saving ratio <em>SR</em>, grouped by the number of regenerated STO
+        steps: the share of experiments with <em>SR</em>&nbsp;&ge;&nbsp;50% versus
+        <em>SR</em>&nbsp;<&nbsp;50%.
+      </p>
+    </div>
+
+    <h3 style="margin-top:36px; font-size:1.15rem; text-align:center;">
+      The robot model (53 STO steps)
+    </h3>
+    <p style="text-align:justify; margin-bottom:20px;">
+      For the larger robot model from the supplementary material, the following two figures
+      show, for each modified feature, how the regenerated downstream steps are handled and
+      how the total regeneration time compares between VAR and FBR.
+    </p>
+
+    <div class="result-card">
+      <img src="assets/images/staticsr1.png" alt="Composition of BR and GR on the robot model" />
+      <p>
+        For each modified feature, the number of regenerated downstream STO steps handled by
+        GR (success) versus those falling back to BR (Criterion&nbsp;1 or Criterion&nbsp;2
+        failure).
+      </p>
+    </div>
+
+    <div class="result-card">
+      <img src="assets/images/staticsr2.png" alt="VAR versus FBR runtimes on the robot model" />
+      <p>
+        Total regeneration time of VAR and FBR as each feature of the robot model is modified.
+        VAR stays below FBR throughout the feature history, and the two converge as the
+        modified feature approaches the end of the history.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== Code & Usage ==================== -->
+  <section class="code-section container fade-in">
+    <h2 class="section-title">Code & Usage</h2>
+    <p>
+      Our code is open-source under the <strong>MIT License</strong>.
+      See the <a href="https://github.com/chenchenzi718/Fusion2FreeCAD" target="_blank">GitHub repository</a> for full details.
+    </p>
+
+    <h3 style="margin-top:24px; font-size:1.15rem;">Quick Start</h3>
+    <div class="code-block">
+      <code>
+# 1. Install dependencies<br>
+pip install -r requirements.txt<br><br>
+# 2. Set FreeCAD path<br>
+export FREECAD_CMD=/path/to/FreeCADCmd<br><br>
+# 3. Run the full pipeline (clean &rarr; convert &rarr; validate)<br>
+python -m deepcad2free.main
+      </code>
+    </div>
+
+    <h3 style="margin-top:24px; font-size:1.15rem;">Experiment Tools</h3>
+    <div class="code-block">
+      <code>
+# Run parameter modification experiments on all models<br>
+python -m exp_tools.main \&#x3A;<br>
+&nbsp;&nbsp;--scales 5 --scale-min 0.1 --scale-max 0.9 --seed 42
+      </code>
+    </div>
+  </section>
+
+  <!-- ==================== BibTeX ==================== -->
+  <section class="citation container fade-in">
+    <h2 class="section-title">Citation</h2>
+    <p>If you find this work helpful, please consider citing:</p>
+    <div class="bibtex-block">
+      <button class="copy-btn" onclick="navigator.clipboard.writeText(document.querySelector('.bibtex-block code').textContent).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Copy'},1500)})">Copy</button>
+      <code>@inproceedings{chen2026validityassured,
+  author  = {Chen, Zehao and Zheng, Zihe and Lu, Yang and Feng, YuShan and Li, Jialin and Chen, Cong and Liu, Ligang},
+  title   = {Validity-Assured Regeneration of Parametric Solid Modeling},
+  booktitle = {SIGGRAPH Asia},
+  year    = {2026}
+}</code>
+    </div>
+  </section>
+
+  <!-- ==================== Acknowledgements ==================== -->
+  <section class="acknowledgements container fade-in">
+    <h2 class="section-title">Acknowledgements</h2>
+    <p>
+      <!-- TODO: Replace with actual acknowledgements -->
+      This work was supported by [Funding Agency, Grant Number]. We thank the
+      DeepCAD and FreeCAD communities for their open-source contributions.
+    </p>
+  </section>
+
+  <!-- ==================== Footer ==================== -->
+  <footer class="footer container">
+    <p>
+      Website template adapted from
+      <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>.
+    </p>
+    <p style="margin-top:6px;">
+      &copy; 2026 Fusion2FreeCAD &middot;
+      <a href="https://github.com/chenchenzi718/Fusion2FreeCAD" target="_blank">GitHub</a>
+    </p>
+  </footer>
+
+  <script src="js/index.js"></script>
+</body>
+</html>
