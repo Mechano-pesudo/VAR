@@ -1,4 +1,4 @@
-# Fusion2FreeCAD — Project Website
+# Validity-Assured Regeneration of Parametric Solid Modeling — Project Website
 
 Project page for **"Validity-Assured Regeneration of Parametric Solid Modeling"** (SIGGRAPH Asia).
 
