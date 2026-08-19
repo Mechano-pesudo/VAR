@@ -273,6 +273,30 @@ section {
   font-size: 0.95rem;
 }
 
+/* --- Three-up figure row (main results) --- */
+@media (min-width: 600px) {
+  .results-grid.three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Lists in text sections (indented block lists, not inline) --- */
+.abstract ol, .abstract ul,
+.method-content ol, .method-content ul,
+.results ol, .results ul {
+  margin: 4px 0 16px 28px;
+}
+
+/* (i) (ii) style numbering for the abstract's contribution list */
+.abstract ol {
+  list-style-type: lower-roman;
+}
+
+.abstract li, .method-content li, .results li {
+  margin-bottom: 8px;
+  text-align: justify;
+}
+
 /* --- Table --- */
 .table-wrapper {
   overflow-x: auto;

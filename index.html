@@ -88,11 +88,17 @@
     </p>
     <p>
       In this work, we present a <strong>validity-assured method</strong> that accelerates
-      regeneration. Specifically, we (i)&nbsp;propose two novel <em>locality criteria</em>
-      under which information from generation can be reused to accelerate regeneration while
-      guaranteeing correctness, and (ii)&nbsp;provide a rigorous theoretical proof of this
-      correctness guarantee.
+      regeneration. Specifically, we
     </p>
+    <ol>
+      <li>
+        propose two novel <em>locality criteria</em> under which information from generation
+        can be reused to accelerate regeneration while guaranteeing correctness, and
+      </li>
+      <li>
+        provide a rigorous theoretical proof of this correctness guarantee.
+      </li>
+    </ol>
   </section>
 
   <!-- ==================== Method ==================== -->
@@ -110,11 +116,20 @@
 
       <p>
         We introduce two locality criteria that determine whether a stored B-rep delta can be
-        safely reused. Criterion&nbsp;1 requires that the faces removed during generation still
-        exist in the updated input solids, so that the recorded removal regions remain
-        available. Criterion&nbsp;2 requires that the newly introduced boundary region does not
-        intersect the opposite input boundary, so that no new intersection curves are created.
+        safely reused.
       </p>
+      <ul>
+        <li>
+          <strong>Criterion&nbsp;1</strong> requires that the faces removed during generation
+          still exist in the updated input solids, so that the recorded removal regions
+          remain available.
+        </li>
+        <li>
+          <strong>Criterion&nbsp;2</strong> requires that the newly introduced boundary region
+          does not intersect the opposite input boundary, so that no new intersection curves
+          are created.
+        </li>
+      </ul>
 
       <p>
         When both criteria are satisfied, our method reuses the stored faces through a
@@ -137,18 +152,26 @@
       <img src="assets/images/Pipeline_page.png" alt="Experiment pipeline" />
     </div>
 
-    <p style="text-align:justify; margin-bottom:20px;">
+    <p style="text-align:justify; margin-bottom:8px;">
       In the paper, we evaluate our method on the <strong>DeepCAD dataset</strong>. Each
       Fusion&nbsp;360 model is first converted into an executable FreeCAD Python script; the
       dataset is then filtered to keep only the models that
-      (1)&nbsp;have a modeling history longer than seven STO steps, and
-      (2)&nbsp;can be correctly generated, modified, and regenerated in FreeCAD
-      (dataset details are provided in the supplementary material),
-      leaving <strong>424</strong> valid parametric models.
-      For each model, every feature (except the last one) is randomly modified five times by
-      scaling its parameter value into the range <strong>[0.1,&nbsp;1.9]</strong>; the runtimes
-      of both validity-assured regeneration (VAR) and full Boolean regeneration (FBR) are
-      recorded for every experiment.
+    </p>
+    <ol>
+      <li>
+        have a modeling history longer than seven STO steps, and
+      </li>
+      <li>
+        can be correctly generated, modified, and regenerated in FreeCAD
+        (dataset details are provided in the supplementary material).
+      </li>
+    </ol>
+    <p style="text-align:justify; margin-bottom:20px;">
+      The filtering leaves <strong>424</strong> valid parametric models. For each model, every
+      feature (except the last one) is randomly modified five times by scaling its parameter
+      value into the range <strong>[0.1,&nbsp;1.9]</strong>; the runtimes of both
+      validity-assured regeneration (VAR) and full Boolean regeneration (FBR) are recorded for
+      every experiment.
     </p>
 
     <div class="results-grid">
@@ -207,29 +230,33 @@
       fallback.
     </p>
 
-    <div class="result-card">
-      <img src="assets/images/statics1.png" alt="Histogram of the step-level time ratio" />
-      <p>Distribution of the step-level time ratio <em>TR</em><sub>j</sub> over all successfully
-      regenerated STO steps of all parameter-modification experiments.</p>
-    </div>
+    <div class="results-grid three">
+      <div class="result-card">
+        <img src="assets/images/statics1.png" alt="Histogram of the step-level time ratio" />
+        <p>
+          Distribution of the step-level time ratio <em>TR</em><sub>j</sub> over all
+          successfully regenerated STO steps of all parameter-modification experiments.
+        </p>
+      </div>
 
-    <div class="result-card">
-      <img src="assets/images/statics2.png" alt="Scatter plot of FBR versus VAR" />
-      <p>
-        Edit-level runtimes: each point is one parameter-modification experiment
-        (<em>t</em><sub>FBR</sub> vs. <em>t</em><sub>VAR</sub>). Blue points (below the
-        diagonal) are speeded up by VAR; red points are the cases where VAR incurs a slightly
-        higher cost.
-      </p>
-    </div>
+      <div class="result-card">
+        <img src="assets/images/statics2.png" alt="Scatter plot of FBR versus VAR" />
+        <p>
+          Edit-level runtimes: each point is one parameter-modification experiment
+          (<em>t</em><sub>FBR</sub> vs. <em>t</em><sub>VAR</sub>). Blue points (below the
+          diagonal) are speeded up by VAR; red points are the cases where VAR incurs a
+          slightly higher cost.
+        </p>
+      </div>
 
-    <div class="result-card">
-      <img src="assets/images/statics3.png" alt="Distribution of the saving ratio" />
-      <p>
-        Distribution of the saving ratio <em>SR</em>, grouped by the number of regenerated STO
-        steps: the share of experiments with <em>SR</em>&nbsp;&ge;&nbsp;50% versus
-        <em>SR</em>&nbsp;<&nbsp;50%.
-      </p>
+      <div class="result-card">
+        <img src="assets/images/statics3.png" alt="Distribution of the saving ratio" />
+        <p>
+          Distribution of the saving ratio <em>SR</em>, grouped by the number of regenerated
+          STO steps: the share of experiments with <em>SR</em>&nbsp;&ge;&nbsp;50% versus
+          <em>SR</em>&nbsp;<&nbsp;50%.
+        </p>
+      </div>
     </div>
 
     <h3 style="margin-top:36px; font-size:1.15rem; text-align:center;">
