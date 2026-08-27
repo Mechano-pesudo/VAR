@@ -1,6 +1,6 @@
 # Validity-Assured Regeneration of Parametric Solid Modeling — Project Website
 
-Project page for **"Validity-Assured Regeneration of Parametric Solid Modeling"** (SIGGRAPH Asia).
+Project page for **"Validity-Assured Regeneration of Parametric Solid Modeling"** (SIGGRAPH Asia 2026).
 
 ## File Structure
 
